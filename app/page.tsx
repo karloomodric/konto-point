@@ -1,103 +1,88 @@
-import Image from "next/image";
+import Link from "next/link";
+
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* HERO */}
+      <section className="section" style={{ background: "var(--color-accent-100)" }}>
+        <div className="container reveal">
+          <h1 className="h1 mb-4">Pouzdano knjigovodstvo i poslovna podrška</h1>
+          <p className="p mx-w-2xl mb-8">
+            Konto Point - vaš partner za knjigovodstvo, izradu i vođenje EU projekata te poslovno savjetovanje.
+          </p>
+          <div className="flex flex-wrap gap-3 reveal reveal-delay-1">
+            <Link href="/kontakt" className="btn">Zatraži ponudu</Link>
+            <Link href="/usluge" className="btn-outline">Pogledaj usluge</Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* SERVICES PREVIEW */}
+      <section className="section">
+        <div className="container">
+          <h2 className="h2 mb-8 pop in-view">Usluge</h2>
+          
+          <div className="grid gap-6 md:grid-cols-3">
+
+            <div className="card card-anim pop pop-delay-1">
+              <h3 className="font-semibold mb-2">Knjigovodstvo</h3>
+              <p className="text-sm text-brand-600 mb-4">
+                Vođenje poslovnih knjiga, PDV obrasci, obračun plaća i mjesečni  izvještaji.
+              </p>
+              <Link href="/kontakt" className="btn">Kontakt</Link>
+            </div>
+
+            <div className="card card-anim pop pop-delay-2">
+              <h3 className="font-semibold mb-2">EU Projekti</h3>
+              <p className="text-sm text-brand-600 mb-4">
+                Priprema, planiranje, optimizacija troškova i strateška podrška.
+              </p>
+              <Link href="/kontakt" className="btn">Kontakt</Link>
+            </div>
+
+            <div className="card card-anim pop pop-delay-3">
+              <h3 className="font-semibold mb-2">Poslovno savjetovanje</h3>
+              <p className="text-sm text-brand-600 mb-4">
+                Financijsko planiranje, optimizacija troškova i strateška podrška.
+              </p>
+              <Link href="/kontakt" className="btn">Kontakt</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT TEASER */}
+      <section className="section" style={{ background: "#fff" }}>
+        <div className="container">
+          <h2 className="h2 mb-4"> O Nama</h2>
+          <p className="p max-w-3xl">
+            Stručan i pristupačan tim s fokusom na točne rokove, jasnu komunikaciju i rezultate.
+            Lorem ipsum
+          </p>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative section overflow-hidden">
+        {/* VIDEO */}
+        <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/video.mov"
+        autoPlay
+        loop
+        muted
+        playsInline
+        />
+
+        <div className="absolute inset-0 bg-white/70" />
+
+        <div className=" relative container text-center">
+          <h2 className="h2 mb-4">Spremni započeti?</h2>
+          <p className="p mb-6">Pošaljite nam upit i javit ćemo vam se isti dan.</p>
+          <Link href="/kontakt" className="btn">Pošalji upit</Link>
+        </div>
+      </section>
+    </>
   );
 }

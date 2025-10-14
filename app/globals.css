@@ -1,26 +1,198 @@
+/* Tailwind v4 */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* =========================
+BRAND COLORS & TOKENS
+========================= */
+@theme {
+--color-brand-600: #2F3541; /* dark gray */
+--color-brand-500: #2F3541;
+--color-brand-400: #4B5363;
+
+--color-accent-600: #61A3AB; /* teal */
+--color-accent-500: #61A3AB;
+--color-accent-400: #79B1B8;
+--color-accent-100: #E6F2F3;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* =========================
+BASE GLOBAL STYLES
+========================= */
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@apply bg-white text-brand-600 antialiased;
 }
+
+/* Common layout helpers */
+.container { @apply max-w-6xl mx-auto px-4; }
+.section { @apply py-16 md:py-24; }
+
+/* Typography */
+.h1 { @apply text-4xl md:text-6xl font-semibold tracking-tight; }
+.h2 { @apply text-2xl md:text-4xl font-semibold; }
+.p { @apply text-base md:text-lg leading-relaxed text-brand-600; }
+
+/* Buttons */
+.btn {
+@apply inline-flex items-center justify-center rounded-md px-5 py-3 font-medium
+bg-accent-600 text-white hover:opacity-90 transition;
+}
+.btn-outline {
+@apply inline-flex items-center justify-center rounded-md px-5 py-3 font-medium
+border border-accent-600 text-accent-600 hover:bg-accent-100 transition;
+}
+
+/* Cards */
+.card {
+@apply rounded-xl border border-gray-200 p-6 shadow-sm bg-white;
+}
+
+/* Header / Footer backgrounds */
+header { @apply bg-white/80 backdrop-blur-sm; }
+footer { @apply bg-white/80 backdrop-blur-sm; }
+
+/* =========================
+REVEAL ANIMATIONS
+========================= */
+@keyframes fade-up {
+from { opacity: 0; transform: translateY(12px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+/* Add class="reveal" to any element for scroll animation */
+.reveal { opacity: 0; transform: translateY(12px); }
+.reveal.in-view { animation: fade-up 600ms cubic-bezier(.2,.65,.3,1) forwards; }
+
+/* simple stagger delay helpers */
+.reveal-delay-1.in-view { animation-delay: 120ms; }
+.reveal-delay-2.in-view { animation-delay: 220ms; }
+.reveal-delay-3.in-view { animation-delay: 320ms; }
+
+/* =========================
+BUSINESS-CARD STYLE CORNER MARKS
+=========================
+Add inside <body> in app/layout.tsx:
+<span className="crop crop-tl" aria-hidden />
+<span className="crop crop-tr" aria-hidden />
+<span className="crop crop-bl" aria-hidden />
+<span className="crop crop-br" aria-hidden />
+*/
+@layer components {
+:root {
+--corner-offset: 45px; /* distance of elbow from edge */
+--corner-gap: 10px; /* keeps real corner empty */
+--corner-len: 35px; /* length of short stroke */
+--corner-thickness: 1.5px; /* line thickness */
+--corner-color: var(--color-brand-600);
+}
+
+.crop {
+position: fixed;
+width: 0;
+height: 0;
+pointer-events: none;
+z-index: 50;
+}
+.crop::before,
+.crop::after {
+content: "";
+position: absolute;
+background: var(--corner-color);
+}
+
+/* TOP-LEFT — elbow inside, lines extend outward */
+.crop-tl {
+top: var(--corner-offset);
+left: var(--corner-offset);
+}
+.crop-tl::before {
+top: 0;
+right: var(--corner-gap);
+width: var(--corner-len);
+height: var(--corner-thickness);
+}
+.crop-tl::after {
+bottom: var(--corner-gap);
+left: 0;
+width: var(--corner-thickness);
+height: var(--corner-len);
+}
+
+/* TOP-RIGHT — elbow inside, lines extend outward */
+.crop-tr {
+top: var(--corner-offset);
+right: var(--corner-offset);
+}
+.crop-tr::before {
+top: 0;
+left: var(--corner-gap);
+width: var(--corner-len);
+height: var(--corner-thickness);
+}
+.crop-tr::after {
+bottom: var(--corner-gap);
+right: 0;
+width: var(--corner-thickness);
+height: var(--corner-len);
+}
+
+/* BOTTOM-LEFT — elbow inside, lines extend outward */
+.crop-bl {
+bottom: var(--corner-offset);
+left: var(--corner-offset);
+}
+.crop-bl::before {
+bottom: 0;
+right: var(--corner-gap);
+width: var(--corner-len);
+height: var(--corner-thickness);
+}
+.crop-bl::after {
+top: var(--corner-gap);
+left: 0;
+width: var(--corner-thickness);
+height: var(--corner-len);
+}
+
+/* BOTTOM-RIGHT — elbow inside, lines extend outward */
+.crop-br {
+bottom: var(--corner-offset);
+right: var(--corner-offset);
+}
+.crop-br::before {
+bottom: 0;
+left: var(--corner-gap);
+width: var(--corner-len);
+height: var(--corner-thickness);
+}
+.crop-br::after {
+top: var(--corner-gap);
+right: 0;
+width: var(--corner-thickness);
+height: var(--corner-len);
+}
+}
+
+@keyframes pop-up {
+    from { opacity: 0; transform: translateY(14px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.pop { opacity: 0; transform: translateY(14px); scale: (.985); }
+.pop.in-view { animation: pop-up 600ms cubic-bezier(.2,.65,.3,1) forwards; }
+
+.pop-delay-1.in-view { animation-delay: 120ms; }
+.pop-delay-2.in-view { animation-delay: 220ms; }
+.pop-delay-3.in-view { animation-delay: 320ms; }
+
+.card-anim {
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.card-anim:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, .07); border-color: var(--color-accent-600); }
+.card-anim:active { transform: translateY(-1px); }
