@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import CornerBox from "@/components/CornerBox";
 import Reveal from "@/components/Reveal";
+import Link from "next/link";
 
 
 export const metadata: Metadata = {
@@ -31,17 +32,17 @@ export default function RootLayout({
         {/* ===== HEADER ===== */}
         <header className="border-b border-gray-200">
           <div className="container h-16 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
             <img
             src="/LOGO.png"
             alt="Konto-Point"
             width={170}
             height={50}
             />
+            </Link>
             {/* <span className="font-semibold tracking-wide">
               Konto Point
             </span> */}
-            </a>
             <nav className="flex gap-6 text-sm">
               <a href="/usluge" className="hover:text-accent-600">
               Usluge

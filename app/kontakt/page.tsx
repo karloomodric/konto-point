@@ -25,9 +25,10 @@ if (!res.ok) throw new Error(await res.text());
 setStatus("success");
 setMessage("Hvala! Vaša poruka je poslana. Uskoro ćemo vam se javiti.");
 form.reset();
-} catch (err: any) {
+} catch (err) {
+const e = err instanceof Error ? err.message : "Došlo je do greške. Pokušajte ponovo.";
 setStatus("error");
-setMessage(err?.message || "Došlo je do greške. Pokušajte ponovno.");
+setMessage(e);
 }
 }
 
