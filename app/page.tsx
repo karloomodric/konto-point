@@ -1,18 +1,19 @@
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 
 export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="section" style={{ background: "var(--color-accent-100)" }}>
+      <section className="section hero-animate" style={{ background: "var(--color-accent-100)" }}>
         <div className="container reveal">
           <h1 className="h1 mb-4">Pouzdano knjigovodstvo i poslovna podrška</h1>
           <p className="p mx-w-2xl mb-8">
             Konto Point - vaš partner za knjigovodstvo, izradu i vođenje EU projekata te poslovno savjetovanje.
           </p>
           <div className="flex flex-wrap gap-3 reveal reveal-delay-1">
-            <Link href="/kontakt" className="btn">Zatraži ponudu</Link>
+            <Link href="/kontakt" className="btn cta">Zatraži ponudu</Link>
             <Link href="/usluge" className="btn-outline">Pogledaj usluge</Link>
           </div>
         </div>
@@ -30,7 +31,7 @@ export default function Home() {
               <p className="text-sm text-brand-600 mb-4">
                 Vođenje poslovnih knjiga, PDV obrasci, obračun plaća i mjesečni  izvještaji.
               </p>
-              <Link href="/kontakt" className="btn">Kontakt</Link>
+              <Link href="/kontakt" className="btn">Zatraži ponudu</Link>
             </div>
 
             <div className="card card-anim pop pop-delay-2">
@@ -38,7 +39,7 @@ export default function Home() {
               <p className="text-sm text-brand-600 mb-4">
                 Priprema, planiranje, optimizacija troškova i strateška podrška.
               </p>
-              <Link href="/kontakt" className="btn">Kontakt</Link>
+              <Link href="/kontakt" className="btn">Saznaj više</Link>
             </div>
 
             <div className="card card-anim pop pop-delay-3">
@@ -46,7 +47,7 @@ export default function Home() {
               <p className="text-sm text-brand-600 mb-4">
                 Financijsko planiranje, optimizacija troškova i strateška podrška.
               </p>
-              <Link href="/kontakt" className="btn">Kontakt</Link>
+              <Link href="/kontakt" className="btn">Rezerviraj konzultacije</Link>
             </div>
           </div>
         </div>
