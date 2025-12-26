@@ -329,3 +329,121 @@ input.card, textarea.card, select.card { padding: 14px 16px; font-size: 16px; wi
     100% { opacity: 0;   transform: scale(1.12); }
   }
 }
+/* === Set your exact contact color here === */
+/* If you already have a brand variable, replace the hex below with it */
+:root {
+  --kp-contact-color: #61A3AB; /* <- change this to match your brand */
+}
+
+/* Lock color (beats global a:hover rules) */
+.kp-contact,
+.kp-contact:hover,
+.kp-contact:focus,
+.kp-contact:active {
+  color: var(--kp-contact-color) !important;
+  text-decoration: none;
+}
+
+/* Layout */
+.kp-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kp-text {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  transition: text-shadow 220ms ease, transform 220ms ease;
+}
+
+.kp-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+/* Icon swap container */
+.kp-swap {
+  position: relative;
+  width: 36px;
+  height: 36px;
+}
+
+/* Icons */
+.kp-icon {
+  position: absolute;
+  inset: 0;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  transform: translateY(6px) scale(0.96);
+  filter: blur(1px);
+  transition: none;
+  pointer-events: none;
+}
+
+/* Default visible phone */
+.kp-phone {
+  opacity: 0.9;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Hover: loop swapping + subtle glow on icons */
+.kp-contact:hover .kp-phone {
+  animation: kp-phoneSwap 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(47, 111, 106, 0.35));
+}
+
+.kp-contact:hover .kp-mail {
+  animation: kp-mailSwap 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(47, 111, 106, 0.35));
+}
+
+/* Glow on “Kontakt” text (no color change) */
+.kp-contact:hover .kp-text {
+  text-shadow: 0 0 14px rgba(47, 111, 106, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Swap animations */
+@keyframes kp-phoneSwap {
+  0%, 45% {
+    opacity: 0.9;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  55%, 100% {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+    filter: blur(1.5px);
+  }
+}
+
+@keyframes kp-mailSwap {
+  0%, 45% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+    filter: blur(1.5px);
+  }
+  55%, 100% {
+    opacity: 0.9;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .kp-contact:hover .kp-phone,
+  .kp-contact:hover .kp-mail {
+    animation: none !important;
+  }
+}
+
+
+
+

@@ -59,8 +59,8 @@ return (
 
 <div className="mt-10 text-sm text-brand-600 space-y-1">
 <p><strong>E-mail:</strong> info@kontopoint.hr</p>
-<p><strong>Telefon:</strong> +385 (0)91 123 4567</p>
-<p><strong>Lokacija:</strong> Ul. knezova Šubića Bribirskih 15a, Benkovac</p>
+<p><strong>Telefon:</strong> +385 (0)98 597 151</p>
+<p><strong>Lokacija:</strong> Ul. knezova Šubića Bribirskih, Benkovac</p>
 <p><strong>Radno vrijeme:</strong> Pon – Pet: 8:00 – 16:00</p>
 </div>
 </div>
